@@ -9,7 +9,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      # Azure repositories are not reliable, we need to prevent azure giving us packages.
       - name: Generate random binary file
         run: |
           dd if=/dev/urandom of=100M.dat bs=1048576 count=100
@@ -17,5 +16,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: download-100M
-          path: 100M.dat
+          name: download
+          path: |
+            100M.dat
+            README.md
